@@ -1,0 +1,9 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/CubeUI/CubeUIStylesheet.uss?fileID=7433441132597879392&amp;guid=8ed8fc0095e5b2040ab7815fa7370d32&amp;type=3#CubeUIStylesheet" />
+    <engine:VisualElement name="ButtonContainer" style="flex-grow: 0; flex-direction: row; align-items: center; align-self: center;">
+        <engine:Button text="Spin" name="SpinButton" class="button" />
+        <engine:Button text="Rotate" name="RotateButton" class="button" />
+        <engine:Button text="Stop" name="StopButton" class="button" />
+        <engine:Button text="Reset" name="ResetButton" class="button" />
+    </engine:VisualElement>
+</engine:UXML>

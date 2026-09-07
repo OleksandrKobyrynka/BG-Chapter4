@@ -1,0 +1,20 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/PlayMarket/PlayMarketUSS.uss?fileID=7433441132597879392&amp;guid=47410301f3c542149a8e3c33ada70ba6&amp;type=3#PlayMarketUSS"/>
+    <ui:VisualElement name="app-card" data-source-path="" class="app-card" style="flex-grow: 0;">
+        <ui:Image name="app-icon" data-source-path="" class="app-icon" style="border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; overflow: hidden;">
+            <Bindings>
+                <ui:DataBinding property="source" data-source-path="Icon" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Image>
+        <ui:Label text="Name" name="app-name" data-source-path="" class="app-name">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="AppName" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+        <ui:Label text="0.0" name="app-rating" data-source-path="" class="app-rating">
+            <Bindings>
+                <ui:DataBinding property="text" data-source-path="RatingText" binding-mode="ToTarget"/>
+            </Bindings>
+        </ui:Label>
+    </ui:VisualElement>
+</ui:UXML>

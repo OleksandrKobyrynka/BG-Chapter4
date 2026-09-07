@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619533bb04c88534ca694526749348e1, type: 3}
+  m_Name: TelegramData
+  m_EditorClassIdentifier: Assembly-CSharp::AppData
+  _id: 3
+  _appName: Telegram
+  _developer: Telegram FZ-LLC
+  _rating: 3.7
+  _category: 0
+  _icon: {fileID: 21300000, guid: 163ba16c8a3b3244591813c26932223f, type: 3}
+  _description: "Pure instant messaging \u2014 simple, fast, secure, and synced across
+    all your devices. One of the top 5 most downloaded apps in the world with over
+    1 billion active users."
+  _screenshots:
+  - {fileID: 21300000, guid: 049b173f287c4114bba35aa41667b48d, type: 3}
+  - {fileID: 21300000, guid: a8e71dbc2bb8ba04f8828b0e840eb818, type: 3}
+  - {fileID: 21300000, guid: 9f9f31cf623ed2742acc860e6d37b2b3, type: 3}
+  - {fileID: 21300000, guid: 487eb68a211c50d48bb7803eeaef6dda, type: 3}
+  - {fileID: 21300000, guid: 480578108498c8a429e801a94f9716ee, type: 3}

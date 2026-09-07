@@ -1,0 +1,6 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="tab-container" style="flex-grow: 1;">
+        <ui:Label text="Apps" name="tabs-label" class="text" style="left: auto; margin-left: 60px; margin-top: 40px;"/>
+        <ui:VisualElement name="grid-container" class="grid-container" style="flex-grow: 1;"/>
+    </ui:VisualElement>
+</ui:UXML>

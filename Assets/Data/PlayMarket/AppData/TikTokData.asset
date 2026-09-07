@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619533bb04c88534ca694526749348e1, type: 3}
+  m_Name: TikTokData
+  m_EditorClassIdentifier: Assembly-CSharp::AppData
+  _id: 1
+  _appName: TikTok
+  _developer: TikTok Pte. Ltd.
+  _rating: 3.6
+  _category: 0
+  _icon: {fileID: 21300000, guid: b86d40ecfcbe1f246af584d4df01a001, type: 3}
+  _description: "TikTok is THE destination for mobile videos. On TikTok, short-form
+    videos are exciting, spontaneous, and genuine. Whether you\u2019re a sports fanatic,
+    a pet enthusiast, or just looking for a laugh, there\u2019s something for everyone
+    on TikTok. All you have to do is watch, engage with what you like, skip what
+    you don\u2019t, and you\u2019ll find an endless stream of short videos that feel
+    personalized just for you. From your morning coffee to your afternoon errands,
+    TikTok has the videos that are guaranteed to make your day."
+  _screenshots:
+  - {fileID: 21300000, guid: 6714e888e41307348a2dc2d63ddbac5d, type: 3}
+  - {fileID: 21300000, guid: ab1a57fc6ca1b314a82b2f86d0373a18, type: 3}
+  - {fileID: 21300000, guid: f2bf2fa06f4ff854a89421f26264c464, type: 3}
+  - {fileID: 21300000, guid: 97827f8bb3402664d8efc57480d38386, type: 3}
+  - {fileID: 21300000, guid: 1bc1d6fe9f338644f9249236ad0e1dbd, type: 3}

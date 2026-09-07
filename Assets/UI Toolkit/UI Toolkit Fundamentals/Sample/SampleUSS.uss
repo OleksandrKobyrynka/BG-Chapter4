@@ -1,0 +1,6 @@
+VisualElement {
+}
+
+.labelText {
+    color: rgb(255, 0, 0);
+}

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 619533bb04c88534ca694526749348e1, type: 3}
+  m_Name: FruitNinjaData
+  m_EditorClassIdentifier: Assembly-CSharp::AppData
+  _id: 6
+  _appName: Fruit Ninja
+  _developer: Halfbrick Studios
+  _rating: 4.1
+  _category: 1
+  _icon: {fileID: 21300000, guid: bd304c0fc8b42764a9266b532dbab420, type: 3}
+  _description: 'Welcome to the dojo, ninja. Your objective: become a master of slicing
+    fruit! What better way to do that than play Fruit Ninja, the original hit fruit-slicing
+    mobile game?'
+  _screenshots:
+  - {fileID: 21300000, guid: 53db2923911dbbb42b6aa869a7ae140c, type: 3}
+  - {fileID: 21300000, guid: 0e6204e8bdccca74da69547a7d99fcee, type: 3}
+  - {fileID: 21300000, guid: 1e464f3e337d0d2439190c50e8d55e5e, type: 3}
+  - {fileID: 21300000, guid: a30789c94ebf4414b98c35116f9ced3d, type: 3}
+  - {fileID: 21300000, guid: a5ea37d8bd3285b47aa8628d892cb404, type: 3}
