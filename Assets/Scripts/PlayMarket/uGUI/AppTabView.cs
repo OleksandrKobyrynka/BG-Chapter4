@@ -9,9 +9,4 @@ public class AppTabView : MonoBehaviour
 
     public AppCategory Category => _category;
     public Transform Content => _content;
-
-    public void SetVisible(bool isVisible)
-    {
-        gameObject.SetActive(isVisible);
-    }
 }

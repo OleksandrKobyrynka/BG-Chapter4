@@ -9,7 +9,7 @@ public class ScrollButtonController : MonoBehaviour
     [SerializeField] private Button _leftScrollButton;
     [SerializeField] private Button _rightScrollButton;
 
-    [SerializeField] private float _scrollDuration = 0.25f;
+    [SerializeField, Min(0.1f)] private float _scrollDuration = 0.25f;
     [SerializeField, Range(0.1f, 1f)] private float _scrollStepMultiplier = 0.5f;
 
     private Coroutine _scrollCoroutine;
@@ -43,10 +43,12 @@ public class ScrollButtonController : MonoBehaviour
             return;
         }
 
-        if (_scrollCoroutine != null) StopCoroutine(_scrollCoroutine);
+        if (_scrollCoroutine != null)
         {
-            _scrollCoroutine = StartCoroutine(SmoothScroll(targetX));
+            StopCoroutine(_scrollCoroutine);
         }
+
+        _scrollCoroutine = StartCoroutine(SmoothScroll(targetX));
     }
 
     private IEnumerator SmoothScroll(float targetX)
@@ -58,10 +60,9 @@ public class ScrollButtonController : MonoBehaviour
         {
             elapsed += Time.deltaTime;
             float t = Mathf.Clamp01(elapsed / _scrollDuration);
-            float eased = 1f - Mathf.Pow(1f - t, 3f);
 
             _content.anchoredPosition = new Vector2(
-                Mathf.Lerp(startX, targetX, eased),
+                Mathf.Lerp(startX, targetX, t),
                 _content.anchoredPosition.y
             );
             yield return null;
