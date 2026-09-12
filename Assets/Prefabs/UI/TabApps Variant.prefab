@@ -8,6 +8,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2121810043105611083, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
+      propertyPath: m_fontSize
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420650223016082087, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
+      propertyPath: _leftScrollButton
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3420650223016082087, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
+      propertyPath: _rightScrollButton
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4604857963408503797, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -92,8 +104,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: TabApps Variant
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedComponents:
+    - {fileID: 3420650223016082087, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
+    m_RemovedGameObjects:
+    - {fileID: 7607963876151508378, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
+    - {fileID: 7246488820029891521, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8692696681038302230, guid: 3bdf6b13f57362e46ac8dc43c06143a1, type: 3}

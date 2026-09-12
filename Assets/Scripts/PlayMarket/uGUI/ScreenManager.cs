@@ -4,6 +4,7 @@ public class ScreenManager : MonoBehaviour
 {
     [SerializeField] private GameObject _mainScreen;
     [SerializeField] private AppDetailsView _detailsView;
+    [SerializeField] private ScreenshotPanelView _screenshotView;
 
     public void OpenDetails(AppData app)
     {
@@ -15,5 +16,10 @@ public class ScreenManager : MonoBehaviour
     {
         _detailsView.Hide();
         _mainScreen.SetActive(true);
+    }
+
+    public void CloseScreenshot()
+    {
+        _screenshotView.Hide();
     }
 }

@@ -1,75 +1,87 @@
 <ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
     <ui:Template name="tab-container" src="project://database/Assets/UI%20Toolkit/PlayMarket/tab-container.uxml?fileID=9197481963319205126&amp;guid=1fcbf0b8a696c8b49b718ec8e60b5555&amp;type=3#tab-container"/>
     <Style src="project://database/Assets/UI%20Toolkit/PlayMarket/PlayMarketUSS.uss?fileID=7433441132597879392&amp;guid=47410301f3c542149a8e3c33ada70ba6&amp;type=3#PlayMarketUSS"/>
-    <ui:VisualElement name="screen-root" class="screen-root" style="flex-grow: 1;">
-        <ui:VisualElement name="main-screen" data-source="" class="screen main-screen" style="justify-content: flex-start;">
-            <ui:VisualElement name="header-container" style="flex-grow: 0; flex-basis: 200px; flex-direction: row;">
-                <ui:VisualElement name="play-market-logo-container" style="flex-grow: 1; flex-shrink: 1; flex-direction: row;">
-                    <ui:Image name="play-market-icon" source="project://database/Assets/Art/Sprites/Play%20Market/Icons/SPR_Icon.png?fileID=2800000&amp;guid=22b49767a2610e645a7aeefb7b1789fe&amp;type=3#SPR_Icon" style="flex-grow: 0; flex-basis: auto; background-image: none; background-size: 100% 100%; width: 120px; height: 120px; flex-shrink: 0; align-self: center; margin-left: 30px;"/>
-                    <ui:Label text="Google Play" name="play-market-label" class="textStyle text" style="flex-grow: 1; font-size: 50px;"/>
-                </ui:VisualElement>
-                <ui:Image name="user-avatar" source="project://database/Assets/Art/Sprites/Play%20Market/Icons/SPR_UserAvatar.png?fileID=2800000&amp;guid=69114e23330c33a4cb487a0025270a15&amp;type=3#SPR_UserAvatar" style="flex-grow: 0; flex-basis: auto; background-image: none; background-size: 100% 100%; width: 120px; height: 120px; flex-shrink: 0; align-self: center; margin-left: 0; margin-right: 30px;"/>
+    <SafeAreaUIToolkit style="flex-grow: 1; background-color: rgb(22, 28, 28);">
+        <ui:VisualElement name="screen-root" class="screen-root" style="flex-grow: 1;">
+            <ui:VisualElement name="main-screen" data-source="" class="screen main-screen" style="justify-content: flex-start;">
+                <ui:ScrollView name="tabs-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
+                    <ui:VisualElement name="tabs-container" style="flex-grow: 1;">
+                        <ui:VisualElement name="header-container" class="header-container">
+                            <ui:VisualElement name="play-market-logo-container" class="header-left">
+                                <ui:Image name="play-market-icon" source="project://database/Assets/Art/Sprites/Play%20Market/Icons/SPR_Icon.png?fileID=2800000&amp;guid=22b49767a2610e645a7aeefb7b1789fe&amp;type=3#SPR_Icon" class="play-market-icon"/>
+                                <ui:Label text="Google Play" name="play-market-label" class="play-market-label"/>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="header-spacer" class="header-spacer"/>
+                            <ui:Image name="user-avatar" source="project://database/Assets/Art/Sprites/Play%20Market/Icons/SPR_UserAvatar.png?fileID=2800000&amp;guid=69114e23330c33a4cb487a0025270a15&amp;type=3#SPR_UserAvatar" class="user-avatar"/>
+                        </ui:VisualElement>
+                        <ui:Image name="line" style="height: 5px; background-color: rgb(255, 255, 255);"/>
+                        <ui:Instance template="tab-container" name="apps-tab-container"/>
+                        <ui:Instance template="tab-container" name="games-tab-container">
+                            <AttributeOverrides element-name="tabs-label" text="Games"/>
+                        </ui:Instance>
+                    </ui:VisualElement>
+                </ui:ScrollView>
             </ui:VisualElement>
-            <ui:Image name="line" style="height: 5px; background-color: rgb(255, 255, 255);"/>
-            <ui:ScrollView name="tabs-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
-                <ui:VisualElement name="tabs-container" style="flex-grow: 1;">
-                    <ui:Instance template="tab-container" name="apps-tab-container"/>
-                    <ui:Instance template="tab-container" name="games-tab-container">
-                        <AttributeOverrides element-name="tabs-label" text="Games"/>
-                    </ui:Instance>
-                </ui:VisualElement>
-            </ui:ScrollView>
-        </ui:VisualElement>
-        <ui:VisualElement name="details-screen" data-source="" class="screen details-screen" style="justify-content: flex-start;">
-            <ui:VisualElement name="header-container" style="flex-grow: 0; flex-basis: 200px; flex-direction: row;">
-                <ui:VisualElement name="button-container" style="flex-grow: 1; flex-shrink: 1; flex-direction: row;">
-                    <ui:Button text="&lt;" name="back-button" class="round-button"/>
-                </ui:VisualElement>
-                <ui:Image name="play-market-icon" style="flex-grow: 0; flex-basis: 200px; background-image: url(&quot;project://database/Assets/Art/Sprites/Play%20Market/Icons/SPR_Icon.png?fileID=21300000&amp;guid=22b49767a2610e645a7aeefb7b1789fe&amp;type=3#SPR_Icon&quot;); background-size: 50% 50%;"/>
-            </ui:VisualElement>
-            <ui:Image name="line" style="height: 5px; background-color: rgb(255, 255, 255);"/>
-            <ui:ScrollView name="details-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
-                <ui:VisualElement name="details-container" style="flex-grow: 1;">
-                    <ui:VisualElement name="main-container" style="flex-grow: 1; height: 400px; flex-direction: row; top: 0;">
-                        <ui:VisualElement name="text-container" style="flex-grow: 1; margin-left: 30px; margin-right: 30px;">
-                            <ui:Label text="Name" name="app-name-label" class="text" style="height: 200px; font-size: 60px; -unity-text-align: lower-left; -unity-font-style: bold; white-space: pre-wrap;">
+            <ui:VisualElement name="details-screen" data-source="" class="screen details-screen" style="justify-content: flex-start;">
+                <ui:ScrollView name="details-scroll" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="flex-grow: 1;">
+                    <ui:VisualElement name="details-container" style="flex-grow: 1;">
+                        <ui:VisualElement name="details-header-container" class="header-container details-header-container">
+                            <ui:Button text="⟵" name="back-button" class="header-round-button back-button" style="font-size: 40px;"/>
+                            <ui:VisualElement name="details-header-spacer" class="header-spacer"/>
+                            <ui:Button text="⋮" name="more-button" class="header-round-button more-button"/>
+                        </ui:VisualElement>
+                        <ui:Image name="line" style="height: 5px; background-color: rgb(255, 255, 255);"/>
+                        <ui:VisualElement name="main-container" style="flex-grow: 1; height: 350px; flex-direction: row; top: 0;">
+                            <ui:VisualElement name="image-container" style="flex-grow: 0; width: 300px; height: 300px; align-self: center;">
+                                <ui:Image name="app-icon" source="project://database/Assets/Art/Sprites/Play%20Market/AppsIcons/SPR_ChatGPTIcon.png?fileID=2800000&amp;guid=611427a8d0d14b64cb078629fbc28de0&amp;type=3#SPR_ChatGPTIcon" style="flex-grow: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; background-color: rgb(22, 28, 28); overflow: hidden; margin-top: 30px; margin-right: 30px; margin-bottom: 30px; margin-left: 30px;">
+                                    <Bindings>
+                                        <ui:DataBinding property="source" data-source-path="Icon" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Image>
+                            </ui:VisualElement>
+                            <ui:VisualElement name="text-container" style="flex-grow: 1; margin-left: 0; margin-right: 0;">
+                                <ui:Label text="Name" name="app-name-label" class="text" style="height: 150px; font-size: 60px; -unity-text-align: lower-left; -unity-font-style: bold; white-space: pre-wrap; text-overflow: ellipsis;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="AppName" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Label text="Developer" name="developer-label" class="text" style="height: 100px; font-size: 40px; -unity-text-align: lower-left; -unity-font-style: bold; color: rgb(0, 123, 86); white-space: pre-wrap; text-overflow: ellipsis;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="Developer" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
+                                <ui:Label text="0.0" name="rating-label" class="text" style="height: 100px; font-size: 40px; -unity-text-align: middle-left; -unity-font-style: bold; white-space: pre-wrap;">
+                                    <Bindings>
+                                        <ui:DataBinding property="text" data-source-path="RatingText" binding-mode="ToTarget"/>
+                                    </Bindings>
+                                </ui:Label>
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                        <ui:Button text="Install" name="install-button" class="install-button"/>
+                        <ui:ScrollView name="screenshots-view" mode="Horizontal" horizontal-scroller-visibility="Hidden" vertical-scroller-visibility="Hidden" style="height: auto; margin-top: 30px; margin-bottom: 30px;">
+                            <ui:VisualElement name="screenshots-content" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; flex-shrink: 0;"/>
+                        </ui:ScrollView>
+                        <ui:VisualElement name="desription-container" style="flex-grow: 1; margin-left: 30px; margin-right: 30px;">
+                            <ui:Label text="Description" name="description-label" class="text" style="height: 100px;"/>
+                            <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mi odio, iaculis quis sagittis ac, mattis nec erat. Morbi eu volutpat lorem, eu rhoncus neque. Donec vitae vehicula lorem. Mauris vulputate, sapien vitae posuere bibendum, mi mauris malesuada justo, quis suscipit nisi tellus ac tortor. Maecenas varius, est eu imperdiet dapibus, lectus elit placerat mi, at tempor augue lorem ac nibh. Cras auctor rutrum tellus ornare lobortis. Etiam congue ac leo vitae placerat. Nullam quis risus sollicitudin, efficitur eros sed, convallis diam. Suspendisse dui ante, consectetur nec rutrum vitae, posuere porta nisi." name="description-text" class="text" style="height: auto; font-size: 40px; -unity-font-style: normal; white-space: normal;">
                                 <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="AppName" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Label text="Developer" name="developer-label" class="text" style="height: 100px; font-size: 50px; -unity-text-align: lower-left; -unity-font-style: bold; color: rgb(0, 123, 86); white-space: pre-wrap;">
-                                <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="Developer" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Label>
-                            <ui:Label text="0.0" name="rating-label" class="text" style="height: 100px; font-size: 50px; -unity-text-align: middle-left; -unity-font-style: bold; white-space: pre-wrap;">
-                                <Bindings>
-                                    <ui:DataBinding property="text" data-source-path="RatingText" binding-mode="ToTarget"/>
+                                    <ui:DataBinding property="text" data-source-path="Description" binding-mode="ToTarget"/>
                                 </Bindings>
                             </ui:Label>
                         </ui:VisualElement>
-                        <ui:VisualElement name="image-container" style="flex-grow: 0; width: 400px; height: 400px;">
-                            <ui:Image name="app-icon" source="project://database/Assets/Art/Sprites/Play%20Market/AppsIcons/SPR_ChatGPTIcon.png?fileID=2800000&amp;guid=611427a8d0d14b64cb078629fbc28de0&amp;type=3#SPR_ChatGPTIcon" style="flex-grow: 1; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; border-top-left-radius: 50px; border-top-right-radius: 50px; border-bottom-right-radius: 50px; border-bottom-left-radius: 50px; background-color: rgb(22, 28, 28); overflow: hidden; margin-top: 30px; margin-right: 30px; margin-bottom: 30px; margin-left: 30px;">
-                                <Bindings>
-                                    <ui:DataBinding property="source" data-source-path="Icon" binding-mode="ToTarget"/>
-                                </Bindings>
-                            </ui:Image>
-                        </ui:VisualElement>
                     </ui:VisualElement>
-                    <ui:Button text="Download" name="download-button" style="height: 100px; background-color: rgb(0, 123, 86); font-size: 60px; -unity-font-style: bold; color: rgb(255, 255, 255); border-top-left-radius: 40px; border-top-right-radius: 40px; border-bottom-right-radius: 40px; border-bottom-left-radius: 40px; margin-top: 10px; margin-bottom: 10px; margin-left: 30px; margin-right: 30px; border-top-width: 0; border-right-width: 0; border-bottom-width: 0; border-left-width: 0;"/>
-                    <ui:ScrollView name="screenshots-view" mode="Horizontal" horizontal-scroller-visibility="AlwaysVisible" vertical-scroller-visibility="Hidden" style="height: auto; margin-top: 30px; margin-bottom: 30px;">
-                        <ui:VisualElement name="screenshots-content" style="flex-grow: 0; flex-direction: row; justify-content: flex-start; flex-shrink: 0;"/>
-                    </ui:ScrollView>
-                    <ui:VisualElement name="desription-container" style="flex-grow: 1; margin-left: 30px; margin-right: 30px;">
-                        <ui:Label text="Description" name="description-label" class="text" style="height: 100px;"/>
-                        <ui:Label text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus mi odio, iaculis quis sagittis ac, mattis nec erat. Morbi eu volutpat lorem, eu rhoncus neque. Donec vitae vehicula lorem. Mauris vulputate, sapien vitae posuere bibendum, mi mauris malesuada justo, quis suscipit nisi tellus ac tortor. Maecenas varius, est eu imperdiet dapibus, lectus elit placerat mi, at tempor augue lorem ac nibh. Cras auctor rutrum tellus ornare lobortis. Etiam congue ac leo vitae placerat. Nullam quis risus sollicitudin, efficitur eros sed, convallis diam. Suspendisse dui ante, consectetur nec rutrum vitae, posuere porta nisi." name="description-text" class="text" style="height: auto; font-size: 40px; -unity-font-style: normal; white-space: normal;">
-                            <Bindings>
-                                <ui:DataBinding property="text" data-source-path="Description" binding-mode="ToTarget"/>
-                            </Bindings>
-                        </ui:Label>
-                    </ui:VisualElement>
+                </ui:ScrollView>
+            </ui:VisualElement>
+            <ui:VisualElement name="screenshot-overlay" class="screenshot-overlay">
+                <ui:VisualElement name="screenshot-overlay-background" class="screenshot-overlay-background"/>
+                <ui:VisualElement name="fullscreen-screenshot-area" class="fullscreen-screenshot-area">
+                    <ui:Image name="fullscreen-screenshot-image" class="fullscreen-screenshot-image"/>
                 </ui:VisualElement>
-            </ui:ScrollView>
+                <ui:VisualElement name="screenshot-overlay-header" class="screenshot-overlay-header">
+                    <ui:Button name="close-screenshot-button" text="⟵" class="header-round-button close-screenshot-button"/>
+                    <ui:VisualElement class="header-spacer"/>
+                </ui:VisualElement>
+            </ui:VisualElement>
         </ui:VisualElement>
-    </ui:VisualElement>
+    </SafeAreaUIToolkit>
 </ui:UXML>

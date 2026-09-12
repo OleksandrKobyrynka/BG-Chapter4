@@ -13,7 +13,7 @@ public class PlayMarketController : MonoBehaviour
     [SerializeField] private VisualTreeAsset _appCardTemplate;
     [SerializeField] private VisualTreeAsset _screenshotItemTemplate;
 
-    private readonly Dictionary<AppCategory, VisualElement> _gridsByCategory = new();
+    private readonly Dictionary<AppCategory, VisualElement> _tabsByCategory = new();
 
     private VisualElement _mainScreen;
     private VisualElement _detailsScreen;
@@ -23,15 +23,22 @@ public class PlayMarketController : MonoBehaviour
     private ScrollView _screenshotsView;
     private VisualElement _screenshotsContent;
 
+    private VisualElement _screenshotOverlay;
+    private VisualElement _screenshotOverlayBackground;
+    private Image _fullscreenScreenshotImage;
+    private Button _closeScreenshotButton;
+
     private void OnEnable()
     {
         VisualElement root = _document.rootVisualElement;
 
         CacheStaticElements(root);
-        CacheTabGrids(root);
-        BuildAllGrids();
+        CacheTabs(root);
+        BuildAllTabs();
 
         _backButton.clicked += ReturnToMain;
+
+        _closeScreenshotButton.clicked += CloseScreenshotOverlay;
     }
 
     private void OnDisable()
@@ -39,6 +46,11 @@ public class PlayMarketController : MonoBehaviour
         if (_backButton != null)
         {
             _backButton.clicked -= ReturnToMain;
+        }
+
+        if (_closeScreenshotButton != null)
+        {
+            _closeScreenshotButton.clicked -= CloseScreenshotOverlay;
         }
     }
 
@@ -51,6 +63,11 @@ public class PlayMarketController : MonoBehaviour
         _detailsScroll = root.Q<ScrollView>("details-scroll");
         _screenshotsView = root.Q<ScrollView>("screenshots-view");
         _screenshotsContent = root.Q<VisualElement>("screenshots-content");
+
+        _screenshotOverlay = root.Q<VisualElement>("screenshot-overlay");
+        _screenshotOverlayBackground = root.Q<VisualElement>("screenshot-overlay-background");
+        _fullscreenScreenshotImage = root.Q<Image>("fullscreen-screenshot-image");
+        _closeScreenshotButton = root.Q<Button>("close-screenshot-button");
 
         if (_mainScreen == null)
         {
@@ -71,11 +88,26 @@ public class PlayMarketController : MonoBehaviour
         {
             Debug.LogError("Element 'screenshots-content' was not found.", this);
         }
+
+        if (_screenshotOverlay == null)
+        {
+            Debug.LogError("Element 'screenshot-overlay' was not found.", this);
+        }
+
+        if (_fullscreenScreenshotImage == null)
+        {
+            Debug.LogError("Image 'fullscreen-screenshot-image' was not found.", this);
+        }
+
+        if (_closeScreenshotButton == null)
+        {
+            Debug.LogError("Button 'close-screenshot-button' was not found.", this);
+        }
     }
 
-    private void CacheTabGrids(VisualElement root)
+    private void CacheTabs(VisualElement root)
     {
-        _gridsByCategory.Clear();
+        _tabsByCategory.Clear();
 
         foreach (AppCategory category in Enum.GetValues(typeof(AppCategory)))
         {
@@ -93,32 +125,32 @@ public class PlayMarketController : MonoBehaviour
                 continue;
             }
 
-            VisualElement grid = tab.Q<VisualElement>(className: "grid-container");
+            VisualElement grid = tab.Q<VisualElement>(className: "apps-container");
 
             if (grid == null)
             {
                 Debug.LogWarning(
-                    $"No element with class 'grid-container' found inside '{tabName}'.",
+                    $"No element with class 'apps-container' found inside '{tabName}'.",
                     this
                 );
 
                 continue;
             }
 
-            _gridsByCategory[category] = grid;
+            _tabsByCategory[category] = grid;
         }
     }
 
-    private void BuildAllGrids()
+    private void BuildAllTabs()
     {
-        foreach (VisualElement grid in _gridsByCategory.Values)
+        foreach (VisualElement tab in _tabsByCategory.Values)
         {
-            grid.Clear();
+            tab.Clear();
         }
 
         foreach (AppData app in _catalog.Apps)
         {
-            if (!_gridsByCategory.TryGetValue(app.Category, out VisualElement grid))
+            if (!_tabsByCategory.TryGetValue(app.Category, out VisualElement tab))
             {
                 Debug.LogWarning(
                     $"No tab exists for category '{app.Category}'. " +
@@ -135,7 +167,7 @@ public class PlayMarketController : MonoBehaviour
 
             card.RegisterCallback<ClickEvent>(_ => OpenDetails(app));
 
-            grid.Add(card);
+            tab.Add(card);
         }
     }
 
@@ -177,7 +209,10 @@ public class PlayMarketController : MonoBehaviour
             if (image != null)
             {
                 image.sprite = screenshot;
+                image.scaleMode = ScaleMode.ScaleToFit;
             }
+
+            screenshotItem.RegisterCallback<ClickEvent>(_ => OpenScreenshotOverlay(screenshot));
 
             _screenshotsContent.Add(screenshotItem);
         }
@@ -193,6 +228,38 @@ public class PlayMarketController : MonoBehaviour
         if (_screenshotsView != null)
         {
             _screenshotsView.scrollOffset = Vector2.zero;
+        }
+    }
+
+    private void OpenScreenshotOverlay(Sprite screenshot)
+    {
+        if (screenshot == null || _screenshotOverlay == null || _fullscreenScreenshotImage == null)
+        {
+            return;
+        }
+
+        _fullscreenScreenshotImage.sprite = screenshot;
+        _fullscreenScreenshotImage.scaleMode = ScaleMode.ScaleToFit;
+
+        _screenshotOverlay.AddToClassList("screenshot-overlay--open");
+
+        _screenshotOverlay.pickingMode = PickingMode.Position;
+    }
+
+    private void CloseScreenshotOverlay()
+    {
+        if (_screenshotOverlay == null)
+        {
+            return;
+        }
+
+        _screenshotOverlay.RemoveFromClassList("screenshot-overlay--open");
+
+        _screenshotOverlay.pickingMode = PickingMode.Ignore;
+
+        if (_fullscreenScreenshotImage != null)
+        {
+            _fullscreenScreenshotImage.sprite = null;
         }
     }
 }

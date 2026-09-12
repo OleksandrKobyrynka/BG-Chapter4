@@ -14,10 +14,11 @@ public class AppDetailsView : MonoBehaviour
     [Header("Screenshots")]
     [SerializeField] private RectTransform _screenshotsContent;
     [SerializeField] private ScreenshotItemView _screenshotPrefab;
-    [SerializeField] private ScrollButtonController _screenshotsScrollController;
+    [SerializeField] private ScrollController _screenshotsScrollController;
 
-    [Header("Panel")]
-    [SerializeField] private GameObject _panel;
+    [Header("Panels")]
+    [SerializeField] private GameObject _detailsPanel;
+    [SerializeField] private ScreenshotPanelView _screenshotPanel;
 
     public void Show(AppData app)
     {
@@ -27,8 +28,6 @@ public class AppDetailsView : MonoBehaviour
         _ratingText.text = app.RatingText;
         _descriptionText.text = app.Description;
 
-        _screenshotsScrollController.ResetToStart();
-
         ClearScreenshots();
         CreateScreenshots(app);
 
@@ -36,12 +35,12 @@ public class AppDetailsView : MonoBehaviour
 
         _screenshotsScrollController.ResetToStart();
 
-        _panel.SetActive(true);
+        _detailsPanel.SetActive(true);
     }
 
     public void Hide()
     {
-        _panel.SetActive(false);
+        _detailsPanel.SetActive(false);
     }
 
     private void ClearScreenshots()
@@ -58,7 +57,12 @@ public class AppDetailsView : MonoBehaviour
         {
             ScreenshotItemView item = Instantiate(_screenshotPrefab, _screenshotsContent);
 
-            item.Setup(screenshot);
+            item.Setup(screenshot, OnScreenshotClicked);
         }
+    }
+
+    private void OnScreenshotClicked(Sprite sprite)
+    {
+        _screenshotPanel.OpenScreenshot(sprite);
     }
 }

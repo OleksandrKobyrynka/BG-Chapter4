@@ -1,14 +1,16 @@
-using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ScreenshotItemView : MonoBehaviour
+public class ScreenshotPanelView : MonoBehaviour
 {
+    [Header("Main")]
     [SerializeField] private Image _image;
     [SerializeField] private AspectRatioFitter _aspectRatioFitter;
-    [SerializeField] private Button _button;
 
-    public void Setup(Sprite sprite, Action<Sprite> onClick)
+    [Header("Panel")]
+    [SerializeField] private GameObject _panel;
+
+    public void OpenScreenshot(Sprite sprite)
     {
         _image.sprite = sprite;
         _image.preserveAspect = true;
@@ -20,17 +22,12 @@ public class ScreenshotItemView : MonoBehaviour
             _aspectRatioFitter.aspectRatio = aspectRatio;
         }
 
-        _button.onClick.AddListener(() =>
-        {
-            onClick?.Invoke(sprite);
-        });
+        _panel.SetActive(true);
     }
 
-    private void OnDestroy()
+    public void Hide()
     {
-        if (_button != null)
-        {
-            _button.onClick.RemoveAllListeners();
-        }
+        _image.sprite = null;
+        _panel.SetActive(false);
     }
 }

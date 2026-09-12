@@ -1,8 +1,0 @@
-<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/Module%202%20Challange/EditorWindowDemo.uss?fileID=7433441132597879392&amp;guid=c49efb383a197fc42a3d9bd374162fc7&amp;type=3#EditorWindowDemo"/>
-    <ui:Label text="Editor Window Demo" class="custom-label"/>
-    <ui:Slider label="Slider" value="42" high-value="100"/>
-    <ui:Toggle label="Toggle"/>
-    <ui:TextField label="Text Field" placeholder-text="filler text"/>
-    <ui:Button text="Button"/>
-</ui:UXML>
